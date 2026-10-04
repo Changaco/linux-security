@@ -32,7 +32,7 @@ These tools aren't meant to be used directly by the average person.
 
 [bubblewrap](https://github.com/containers/bubblewrap) had its first commit in February 2016 but was [derived from older projects](https://blogs.gnome.org/alexl/2018/06/20/flatpak-a-history/). Written in C, it notably [doesn't support giving applications Internet access without giving them access to the local network and abstract sockets](https://github.com/containers/bubblewrap/issues?q=is%3Aissue%20state%3Aopen%20network).
 
-[gVisor](https://gvisor.dev/)'s first commit was in April 2018. This big project reimplements large parts of the Linux kernel in Go to minimize the risk of a kernel bug being exploited by a sandboxed program. It's primarily meant to be used on servers, but it might also be useful on end-user devices.
+[gVisor](https://gvisor.dev/)'s first commit was in April 2018. This big project reimplements large parts of the Linux kernel in Go to minimize the risk of a kernel bug being exploited by a sandboxed program. It was primarily meant to be used on servers but is growing beyond that. In 2026 it became a [drop-in replacement for bubblewrap](https://gvisor.dev/docs/user_guide/personalities/bwrap/) and capable of [running systemd and a full desktop environment inside the sandbox](https://gvisor.dev/blog/2026/09/17/systemd-in-gvisor/).
 
 [sandwine](https://github.com/hartwork/sandwine) had its first commit in February 2023. Written in Python, it's specific to running Windows applications with [Wine](https://www.winehq.org/). sandwine is built on bubblewrap, so it currently can't fully sandbox applications that need Internet access.
 
@@ -42,7 +42,7 @@ These tools aren't meant to be used directly by the average person.
 
 This category of sandboxing tools has arisen in reaction to the supply chain attacks that have targeted developers in the last few years. All the tools below had their first commit in 2025.
 
-[drop](https://github.com/wrr/drop) (July 2025) is written in Go. Its `drop` command is meant to isolate a specific directory. It has to be called explicitly, which leaves the risk of forgetting to do so.
+[drop](https://github.com/wrr/drop) (July 2025) is written in Go. Its `drop` command is meant to isolate a specific directory. It has to be called explicitly, which leaves the risk of forgetting to do so. Since 2026 it supports [strengthening the sandbox with gVisor](https://github.com/wrr/drop/issues/5).
 
 [litterbox](https://github.com/Gerharddc/litterbox) (August 2025) is written in Rust. Unlike the other tools mentioned in this section, it's built on containers. As noted in its README, that doesn't make it safer.
 
